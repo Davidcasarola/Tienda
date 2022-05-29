@@ -1,21 +1,88 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
 <html>
     <head>
         <title>Tienda en línea</title>
         <meta charset="UTF-8">
-        
+        <meta name="description" content="Página de la lección 2">
+        <meta name="keywords" content="html5, css3, web, fidelitas">
+        <link href="CSS/Estilos01.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div>
-            <hl>Página inicial</hl>
-            <p>Primera página del curso Web y Patrones</p>
-        </div>
-        <p style="text-align:left;">David Casarola
-        <p style="text-align:center;">Universidad Fidélitas
-        <p style="text-align:right;">San José, Tibás
+        <header id="encabezado"><h1>Tienda en línea</h1></header>
+        <br>
     </body>
+    <nav id="menu">
+        <a href="Ejemplo09.html">Atrás</a>
+        <a href="Index.html">Home</a>
+        <a href="Ejemplo02.html">Adelante</a>
+    </nav>
+    <aside id="barraLateral">
+        <h2>Productos más vendidos</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </aside>
+    <section id="contenido">
+        <h2>Artículos principales</h2>
+        <article><header>Asus</header>
+            <p class="descripcion">
+                <cite>Lorem ipsum dolor</cite> sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <figure><img src="images/Equipo1.jpg" width="200"/></figure>
+            <figcaption>Fines ilustrativos</figcaption>
+        </article>
+        <article><header>Alienware</header>
+            <p class="descripcion">
+                <strong>Lorem ipsum dolor</strong> sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <figure><img src="images/Equipo2.jpg" width="200"/></figure>
+            <figcaption>Más valioso</figcaption>
+        </article><article><header>Impresora Mieo Terror</header>
+            <p class="descripcion">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <figure><img src="images/Equipo3.jpg" width="200"/></figure>
+            <figcaption>Mieo terror</figcaption>
+        </article>
+        <br>
+        <article><h2>Productos</h2>
+            <table border="0">
+                <thead id="encabezadoTabla">
+                    <tr>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaResumen">
+                    <tr>
+                        <td>01</td>
+                        <td>Teclados</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Monitores</td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>Headsets</td>
+                    </tr>
+                    <tr>
+                        <td>04</td>
+                        <td>Baterías</td>
+                    </tr>
+                    <tr>
+                        <td>05</td>
+                        <td>Portátiles</td>
+                    </tr>
+                    <tr>
+                        <td>06</td>
+                        <td>Cargadores</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+    </section>
+    <footer id="piePagina">
+        Derechos reservados &COPY; 2022 <address style="display: inline">Tibás, Colima</address> <address style="display: inline">Tel 8820-2655</address>
+    </footer>
 </html>
