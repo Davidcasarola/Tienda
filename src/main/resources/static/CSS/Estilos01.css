@@ -4,7 +4,7 @@
     left: 0;
     height: 8%;
     width: 100%;
-    background-color: #496D8D;
+    background-color:  #797979;
     color: white;
 }
 #encabezado h1 {
@@ -19,7 +19,7 @@
     left: 0;
     height: 4%;
     width: 100%;
-    background-color: #9B8030;
+    background-color:  #797979;
     color: black;
 }
 #menu a:visited {
@@ -35,8 +35,8 @@
     left: 0;
     height: 81%;
     width: 20%;
-    background-color: #8e27f6;
-    color: black;
+    background-color:  #d1d1d1;
+    color: red;
 }
 #contenido {
     position: absolute;
@@ -44,7 +44,7 @@
     left: 20%;
     height: 81%;
     width: 80%;
-    background-color: #24a1df;
+    background-color: #5E8D49;
     color: black;
     overflow: auto;
 }
@@ -54,7 +54,7 @@
     left: 0;
     height: 7%;
     width: 100%;
-    background-color: #87f29b;
+    background-color: #5E8D49;
     color: black;
     text-align: center;
 }
