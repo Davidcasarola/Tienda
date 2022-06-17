@@ -5,36 +5,52 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <!-- comment <h1>Un bastardo</h1>
+        <!--<h1>Un bastardo</h1>
 
         <p>Nombre: <span th:text="${cliente.nombre}"></span></p>
         <p>Apellidos: <span th:text="${cliente.apellidos}"></span></p>
         <p>Correo electrónico:  <span th:text="${cliente.correo}"></span></p>
         <p>Teléfono: <span th:text="${cliente.telefono}"></span></p>
         <!-- Se utiliza $ para obtener atributos que vienen en el modelo  
-        <br><br>-->
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Correo electrónico</th>
-                    <th>Teléfono</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="item : ${clientes}">
-                    <td th:text="${item.nombre}"></td>
-                    <td th:text="${item.apellidos}"></td>
-                    <td th:text="${item.telefono}"></td>
-                    <td th:text="${item.correo}"></td>
-                </tr>
-            </tbody>
-        </table>
+        <br><br>
+        La lista de abajo no puede ser Null, ni empty
+        caca -->
 
-    </tbody>
-</table>
+        <header th:replace="layout/plantilla :: header"/>
+        <h2>Lista de clientes</h2>
 
+        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
+        <br><br>
+        <div th:if="${clientes != null and !clientes.empty}"><!-- @ para acciones que esten en el controler, $ para acciones dentro del modelo -->
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Correo electrónico</th>
+                        <th>Teléfono</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${clientes}">
+                        <td th:text="${item.nombre}"></td>
+                        <td th:text="${item.apellidos}"></td>
+                        <td th:text="${item.telefono}"></td>
+                        <td th:text="${item.correo}"></td>
+                        <td><a th:href="@{/modificarCliente/}+${item.idCliente}">Modificar</a></td>
+                        <td><a th:href="@{/eliminarCliente/}+${item.idCliente}">Eliminar</a></td>
+                    </tr>
+                </tbody>
+            </table>
 
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${clientes == null or clientes.empty}">No tenemos lista para mostrar
+</div>
+        <footer th:replace="layout/plantilla :: footer"/>
 </body>
 </html>
