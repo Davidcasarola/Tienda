@@ -54,7 +54,8 @@ body{
     height: 20px;
     bottom:0;
     left:0;
-    width:100%
+    width:100%;
+    position: fixed;
 }
 .contenido{
     background-color: wheat;

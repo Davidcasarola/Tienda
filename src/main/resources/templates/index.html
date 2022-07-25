@@ -5,34 +5,26 @@
         <meta charset="UTF-8">
         <link th:href="@{css/menu.css}"rel="stylesheet"type="text/css"/>
     </head>
+    <header th:fragment="header" class="header">            <nav class="nav">                <a th:href="@{/}" class="logo nav-link">TechShop</a>                <ul class="nav-menu">                    <li class="nav-menu-item">                        <a th:href="@{/cliente/listado}" class="nav-menu-link nav-link">Clientes</a>                    </li>                    <li class="nav-menu-item">                        <a th:href="@{/categoria/listado}" class="nav-menu-link nav-link">Categorías</a>                    </li>                    <li class="nav-menu-item">                        <a th:href="@{/articulo/listado}" class="nav-menu-link nav-link">Articulos</a>                    </li>                </ul>            </nav>        </header>
     <body>
-        <!--<h1>Un bastardo</h1>
-
-        <p>Nombre: <span th:text="${cliente.nombre}"></span></p>
-        <p>Apellidos: <span th:text="${cliente.apellidos}"></span></p>
-        <p>Correo electrónico:  <span th:text="${cliente.correo}"></span></p>
-        <p>Teléfono: <span th:text="${cliente.telefono}"></span></p>
-        <!-- Se utiliza $ para obtener atributos que vienen en el modelo  
-        <br><br>
-        La lista de abajo no puede ser Null, ni empty
-        caca -->
         <div class="contenido">
 
-            <h2>Nuestros articulos</h2>
+            <h2 th:text="#{index.titulo}">Nuestros articulos</h2>
             <br><br>
             <div th:if="${articulos != null and !articulos.empty}"><!-- @ para acciones que esten en el controler, $ para acciones dentro del modelo -->
                 <table border="1">
                     <thead>
                         <tr>
-                            <th>Descripcion</th>
-                            <th>Precio</th>
+                            <th th:text="#{articulo.descripcion}">Descripcion</th>
+                            <th th:text="#{articulo.precio}">Precio</th>
+                            <th th:text="#{articulo.comprar}"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="item : ${articulos}">
                             <td th:text="${item.descripcion}"></td>
                             <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td>
-                            <td><a href="@{/carrito/agregar/}+${item.idArticulo}">Agregar</a></td>
+                            <td><a th:href="@{/carrito/agregar/}+${item.idArticulo}" th:text="${item.descripcion}">Agregar</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -41,7 +33,8 @@
                 </table>
             </div>
 
-            <div th:if="${articulos == null or articulos.empty}">No tenemos lista para mostrar
+            <div th:if="${articulos == null or articulos.empty}">
+                <p th:text="#{articulo.no_mostrar}"></p>
             </div>
         </div>
         <footer th:replace="layout/plantilla :: footer"/>
