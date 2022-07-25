@@ -36,15 +36,33 @@ body{
     list-style: none;
 }
 .nav-menu-item{
-    font-size: 18px;
-    margin: 0 10px;
-    line-height: 12vh;
+    font-size: 22px;
+    transition: 1s;
 }
 .nav-menu-item:hover{
     background-color: navy;
     transition: 1s;
 }
 .nav-menu-link{
-    padding: 8px 12px; border-radius: 4px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+.footer{
+    background-color: navy;
+    color: white;
+    text-align:center;
+    height: 20px;
+    bottom:0;
+    left:0;
+    width:100%
+}
+.contenido{
+    background-color: wheat;
+    position: fixed;
+    top: 80px;
+    bottom: 20px;
+    left:0;
+    width: 100%;
+    overflow:auto;
 }
 

@@ -3,6 +3,7 @@
     <head>
         <title>Tienda Mieo Terror</title>
         <meta charset="UTF-8">
+        <link th:href="@{css/menu.css}"rel="stylesheet"type="text/css"/>
     </head>
     <body>
         <!--<h1>Un bastardo</h1>
@@ -15,42 +16,34 @@
         <br><br>
         La lista de abajo no puede ser Null, ni empty
         caca -->
+        <div class="contenido">
 
-        <header th:replace="layout/plantilla :: header"/>
-        <h2>Lista de clientes</h2>
+            <h2>Nuestros articulos</h2>
+            <br><br>
+            <div th:if="${articulos != null and !articulos.empty}"><!-- @ para acciones que esten en el controler, $ para acciones dentro del modelo -->
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${articulos}">
+                            <td th:text="${item.descripcion}"></td>
+                            <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td>
+                            <td><a href="@{/carrito/agregar/}+${item.idArticulo}">Agregar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
-        <br><br>
-        <div th:if="${clientes != null and !clientes.empty}"><!-- @ para acciones que esten en el controler, $ para acciones dentro del modelo -->
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Correo electrónico</th>
-                        <th>Teléfono</th>
-                        <th>Modificar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="item : ${clientes}">
-                        <td th:text="${item.nombre}"></td>
-                        <td th:text="${item.apellidos}"></td>
-                        <td th:text="${item.telefono}"></td>
-                        <td th:text="${item.correo}"></td>
-                        <td><a th:href="@{/modificarCliente/}+${item.idCliente}">Modificar</a></td>
-                        <td><a th:href="@{/eliminarCliente/}+${item.idCliente}">Eliminar</a></td>
-                    </tr>
                 </tbody>
-            </table>
+                </table>
+            </div>
 
-        </tbody>
-    </table>
-</div>
-
-<div th:if="${clientes == null or clientes.empty}">No tenemos lista para mostrar
-</div>
+            <div th:if="${articulos == null or articulos.empty}">No tenemos lista para mostrar
+            </div>
+        </div>
         <footer th:replace="layout/plantilla :: footer"/>
-</body>
+    </body>
 </html>
