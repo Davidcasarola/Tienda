@@ -1,40 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Tienda Mieo Terror</title>
+    <head th:replace="layout/plantilla :: head">
+        <title>Tech shop</title>
         <meta charset="UTF-8">
         <link th:href="@{css/menu.css}"rel="stylesheet"type="text/css"/>
     </head>
     <header th:fragment="header" class="header">            <nav class="nav">                <a th:href="@{/}" class="logo nav-link">TechShop</a>                <ul class="nav-menu">                    <li class="nav-menu-item">                        <a th:href="@{/cliente/listado}" class="nav-menu-link nav-link">Clientes</a>                    </li>                    <li class="nav-menu-item">                        <a th:href="@{/categoria/listado}" class="nav-menu-link nav-link">Categorías</a>                    </li>                    <li class="nav-menu-item">                        <a th:href="@{/articulo/listado}" class="nav-menu-link nav-link">Articulos</a>                    </li>                </ul>            </nav>        </header>
     <body>
-        <div class="contenido">
-
-            <h2 th:text="#{index.titulo}">Nuestros articulos</h2>
-            <br><br>
-            <div th:if="${articulos != null and !articulos.empty}"><!-- @ para acciones que esten en el controler, $ para acciones dentro del modelo -->
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th th:text="#{articulo.descripcion}">Descripcion</th>
-                            <th th:text="#{articulo.precio}">Precio</th>
-                            <th th:text="#{articulo.comprar}"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="item : ${articulos}">
-                            <td th:text="${item.descripcion}"></td>
-                            <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td>
-                            <td><a th:href="@{/carrito/agregar/}+${item.idArticulo}" th:text="${item.descripcion}">Agregar</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                </tbody>
-                </table>
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="container">
+            <h2 th:text="#{index.titulo}">Nuestros Articulos</h2>            
+            <div class="row row-cols-3" th:if="${articulos != null and !articulos.empty}">
+                <div class="card" th:each="articulo : ${articulos}" >
+                    <!--     <img src="/images/equipo1.jpg" class="card-img-top" alt="equipo">  -->
+                    <div class="card-body">
+                        <h5 class="card-title">[[${articulo.descripcion}]]</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('¢#,##0.00').format(articulo.precio)}]]</h6>
+                        <a class="card-link" th:href="@{/carrito/agregar/} + ${articulo.idArticulo}">[[#{articulo.comprar}]]</a>
+                        <p class="card-text">[[${articulo.detalle}]]</p>                        
+                    </div>
+                </div>                
             </div>
-
-            <div th:if="${articulos == null or articulos.empty}">
-                <p th:text="#{articulo.no_mostrar}"></p>
+            <div th:if="${articulos == null or articulos.empty}"  th:text="#{articulo.no_mostrar}">
+                No tenemos lista de articulos que mostrar...
             </div>
         </div>
         <footer th:replace="layout/plantilla :: footer"/>

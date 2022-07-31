@@ -14,16 +14,7 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/cliente/listado")
-
-    public String inicio(Model model) {
-        var clientes = clienteService.getClientes();
-        model.addAttribute("clientes", clientes);
-        return "/cliente/listado";
-    
-    }
-    
-        @GetMapping("/cliente/nuevo")
+    @GetMapping("/cliente/nuevo")
     public String nuevoCliente(Cliente cliente) {
         return "/cliente/modificar";
     }
@@ -45,5 +36,20 @@ public class ClienteController {
     public String eliminarCliente(Cliente cliente, Model model) {
         clienteService.delete(cliente);
         return "redirect:/cliente/modificar";
+    }
+
+    @GetMapping("/cliente/listado")
+    public String inicio(Model model) {
+        var clientes = clienteService.getClientes();
+
+        var limiteTotal = 0;
+        for (var c : clientes) {
+            limiteTotal += c.credito.limite;
+        }
+        model.addAttribute("limiteTotal", limiteTotal);
+        model.addAttribute("totalClientes", clientes.size());
+
+        model.addAttribute("clientes", clientes);
+        return "/cliente/listado";
     }
 }
