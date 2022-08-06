@@ -1,13 +1,15 @@
-<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"      xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >    <head th:fragment="head">        <title>TechShop</title><meta charset="UTF-8">        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-            <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
-            <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-            <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-            <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    </head>    <body>        <header th:fragment="header" class="header">  
-
-
-            <nav class="nav">                      <ul class="nav-menu" sec: authorize="hasRole('ROLE_VENDEDOR')">                    <li class="nav-menu-item">                        <a th:href="@{/cliente/listado}" class="nav-menu-link nav-link">Clientes</a>                    </li>                    <li class="nav-menu-item">                        <a th:href="@{/categoria/listado}" class="nav-menu-link nav-link" th:text="#{plantilla.categorias}">Categorías
-                        </a>                    </li>                    <li class="nav-menu-item">                        <a th:href="@{/articulo/listado}" class="nav-menu-link nav-link"th:text="#{plantilla.articulos}">Articulos</a>                    </li>       <li class="nav-menu-item">                        <a th:href="@{/admin/listado}" class="nav-menu-link" sec:authorize="hasrole('ROLE_ADMIN)">Admin</a>                    </li>         </ul>            </nav>       
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"      xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >    
+    <head th:fragment="head">
+        <title>Plantilla</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>    
+    <body>        
+        <header th:fragment="header" class="header">
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
                 <div class="container">
                     <a th:href="@{/}" class="navbar-brand">TechShop</a>
@@ -33,7 +35,7 @@
                                    th:text="#{plantilla.usuarios}">Usuarios</a>
                             </li>
                         </ul>
-                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">//Solo si esta autenticado
                             <li class="nav-item mr-3">
                                 <a href="#" class="nav-link">
                                     <i class="fas fa-user"></i>
@@ -62,23 +64,19 @@
                         </div>
                     </div>
                 </div>
-            </section>     
-
-
-
-        </header>        
-        <div> 
-            
-            
-            <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-info text-white mt-5 p-2">                        
+            </section>
+        </header>
+        <div>    
+            <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-info text-white mt-5 p-2">
                 <div class="container">
-                <div class="col">
-                    <p class="lead text-center">
-                        &COPY [[#{plantilla.derechos}]]
-                        <a th:href="@{/(lang=es)}">ES</a> | 
-                        <a th:href="@{/(lang=en)}">EN</a>
-                    </p>
-                </div>      
-        
-        
-        </footer>    </body></html>
+                    <div class="col">
+                        <p class="lead text-center">
+                            &COPY [[#{plantilla.derechos}]]
+                            <a th:href="@{/(lang=es)}">ES</a> | 
+                            <a th:href="@{/(lang=en)}">EN</a>
+                        </p>
+                    </div>
+                </div>
+            </footer>
+    </body>
+</html>

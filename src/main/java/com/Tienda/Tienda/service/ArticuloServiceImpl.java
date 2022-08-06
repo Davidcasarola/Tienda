@@ -10,29 +10,27 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ArticuloServiceImpl implements ArticuloService {
 
-    @Autowired
+      @Autowired
     private ArticuloDao ArticuloDao;
+    //@Autowired
+    //private CreditoDao creditoDao;
 
-    @Override
     @Transactional(readOnly = true)
-    public List<Articulo> getArticulos(boolean activo) {
-        var lista = (List<Articulo>) ArticuloDao.findAll();
-        if (activo) {
-            lista.removeIf(e -> !e.isActivo());
-        }
-        return lista;
+    public List<Articulo> getArticulos() {
+        return (List<Articulo>) ArticuloDao.findAll();
     }
 
-    @Override
     @Transactional(readOnly = true)
-    public Articulo getArticulos(Articulo articulo) {
+    public Articulo getArticulo(Articulo articulo) {
         return ArticuloDao.findById(articulo.getIdArticulo()).orElse(null);
     }
 
     @Override
     @Transactional
     public void save(Articulo articulo) {
+
         ArticuloDao.save(articulo);
+
     }
 
     @Override
@@ -41,4 +39,14 @@ public class ArticuloServiceImpl implements ArticuloService {
         ArticuloDao.delete(articulo);
     }
     // Otros metodos
+
+    @Override
+    public List<Articulo> getArticulos(boolean activo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Articulo getArticulos(Articulo articulo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

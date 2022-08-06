@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="layout/plantilla :: head">
-        <title>Tech shop</title>
-        <meta charset="UTF-8">
-        <link th:href="@{css/menu.css}"rel="stylesheet"type="text/css"/>
+  <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
-    <header th:fragment="header" class="header">            <nav class="nav">                <a th:href="@{/}" class="logo nav-link">TechShop</a>                <ul class="nav-menu">                    <li class="nav-menu-item">                        <a th:href="@{/cliente/listado}" class="nav-menu-link nav-link">Clientes</a>                    </li>                    <li class="nav-menu-item">                        <a th:href="@{/categoria/listado}" class="nav-menu-link nav-link">Categorías</a>                    </li>                    <li class="nav-menu-item">                        <a th:href="@{/articulo/listado}" class="nav-menu-link nav-link">Articulos</a>                    </li>                </ul>            </nav>        </header>
-    <body>
+     <body>
         <header th:replace="layout/plantilla :: header"/>
         <div class="container">
             <h2 th:text="#{index.titulo}">Nuestros Articulos</h2>            

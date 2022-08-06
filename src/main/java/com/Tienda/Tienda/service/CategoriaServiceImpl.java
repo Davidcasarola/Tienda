@@ -12,15 +12,13 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Autowired
     private CategoriaDao CategoriaDao;
+    //@Autowired
+    //private CreditoDao creditoDao;
 
     @Override
     @Transactional(readOnly = true)
-    public List<Categoria> getCategorias(boolean activo) {
-        var lista = (List<Categoria>) CategoriaDao.findAll();
-        if (activo) {
-            lista.removeIf(e -> !e.isActivo());
-        }
-        return lista;
+    public List<Categoria> getCategorias() {
+        return (List<Categoria>) CategoriaDao.findAll();
     }
 
     @Override
@@ -32,7 +30,9 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     @Transactional
     public void save(Categoria categoria) {
+
         CategoriaDao.save(categoria);
+
     }
 
     @Override

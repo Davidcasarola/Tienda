@@ -26,8 +26,8 @@ public class IndexController {
 
 
         
-        var articulos = articuloService.getArticulos(true);
-        model.addAttribute("articulos", articulos);
+        //var articulos = articuloService.getArticulos(;
+        //model.addAttribute("articulos", articulos);
 
 
         
