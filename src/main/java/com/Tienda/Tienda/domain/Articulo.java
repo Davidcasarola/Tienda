@@ -14,6 +14,7 @@ public class Articulo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name= "id_articulo")
 
     private long idArticulo; //id_Articulo
     private long idCategoria;

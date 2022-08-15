@@ -1,0 +1,22 @@
+package com.Tienda.Tienda.service;
+
+import com.Tienda.Tienda.domain.Articulo;
+import com.Tienda.Tienda.domain.CarritoDetalle;
+import java.util.List;
+
+/**
+ *
+ * @author david
+ */
+public interface CarritoDetalleService {
+
+    CarritoDetalle getCarritoDetalle(Long idCarrito, Articulo articulo);
+
+    public List<CarritoDetalle> getCarritoDetalles(Long idCarrito);
+
+    public void save(CarritoDetalle carritoDetalle);
+
+    public void delete(CarritoDetalle carritoDetalle);
+
+    public void deleteAll(Long idCarrito);
+}

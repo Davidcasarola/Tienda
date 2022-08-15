@@ -13,4 +13,6 @@ public interface ArticuloService {
 
     public void delete(Articulo articulo);
 
+    public Articulo getArticulo(Articulo articulo);
+
 }

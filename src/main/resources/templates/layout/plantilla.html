@@ -1,4 +1,7 @@
-<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"      xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >    
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:fragment="head">
         <title>Plantilla</title>
         <meta charset="UTF-8"/>
@@ -7,8 +10,8 @@
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    </head>    
-    <body>        
+    </head>
+    <body>
         <header th:fragment="header" class="header">
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
                 <div class="container">
@@ -35,12 +38,13 @@
                                    th:text="#{plantilla.usuarios}">Usuarios</a>
                             </li>
                         </ul>
-                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">//Solo si esta autenticado
+                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
                             <li class="nav-item mr-3">
                                 <a href="#" class="nav-link">
                                     <i class="fas fa-user"></i>
                                     <span th:text="#{plantilla.bienvenido}">Bievenido:</span>
-                                    <span sec:authentication="name">Usuario</span>
+                                    <span sec:authentication="name">Usuario</span> | 
+                                    <span sec:authentication="principal.authorities">Usuario</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -51,7 +55,17 @@
                                 </form>
                             </li>
                         </ul>
-                    </div>                    
+                    </div>
+                    <div>
+                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto" th:if="${esCliente != null and esCliente}">
+                            <li class="nav-item mr-3">
+                                <a th:href="@{/carrito/listado}" class="nav-link">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span th:text="${cantidadArticulosCarrito}" class="btn btn-danger">Cantidad</span>
+                                </a>
+                            </li>                            
+                        </ul>
+                    </div>
                 </div>|
             </nav>
             <section id="main-header" class="py-2 bg-success text-white">
@@ -66,17 +80,19 @@
                 </div>
             </section>
         </header>
-        <div>    
-            <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-info text-white mt-5 p-2">
-                <div class="container">
-                    <div class="col">
-                        <p class="lead text-center">
-                            &COPY [[#{plantilla.derechos}]]
-                            <a th:href="@{/(lang=es)}">ES</a> | 
-                            <a th:href="@{/(lang=en)}">EN</a>
-                        </p>
-                    </div>
+
+        <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-info text-white mt-5 p-2">
+            <div class="container">
+                <div class="col">
+                    <!-- //Users <span sec:authentication="name">
+                    //Users <span sec:authentication="principal_authorities"> cuando es un rol> hasRole, cuando son mas hasAnyRole sec:authorize="hasRole('ROLE_ADMIN')"-->
+                    <p class="lead text-center">
+                        &COPY [[#{plantilla.derechos}]]
+                        <a th:href="@{/(lang=es)}">ES</a> | 
+                        <a th:href="@{/(lang=en)}">EN</a>
+                    </p>
                 </div>
-            </footer>
+            </div>
+        </footer>
     </body>
 </html>
